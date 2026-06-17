@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UztexConf — Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0A0A0F;
+            color: #E2E8F0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 500px;
+            background: linear-gradient(135deg, #FF8C00 0%, #CC1500 100%);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            width: 400px; height: 400px;
+            top: -100px; right: -100px;
+            background: #FF8C00;
+            opacity: 0.08;
+        }
+
+        .bg-orb-2 {
+            width: 300px; height: 300px;
+            bottom: 100px; left: -80px;
+            background: #CC1500;
+            opacity: 0.06;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 48px 0 40px;
+            text-align: center;
+        }
+
+        .logo-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #FF8C00, #CC1500);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg { width: 26px; height: 26px; fill: #fff; }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: #F8FAFC;
+            letter-spacing: -0.3px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #FF8C00, #FF6B00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: #94A3B8;
+            line-height: 1.6;
+        }
+
+        .updated {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: rgba(255,140,0,0.1);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 20px;
+            font-size: 13px;
+            color: #FF8C00;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, #FF8C00, #CC1500);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #F1F5F9;
+            margin-bottom: 14px;
+        }
+
+        .section p, .section li {
+            color: #94A3B8;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .section li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px; height: 8px;
+            background: #FF8C00;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .section a {
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .section a:hover { color: #FFa840; }
+
+        .highlight-box {
+            margin-top: 16px;
+            padding: 16px 20px;
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.15);
+            border-radius: 12px;
+        }
+
+        .highlight-box p {
+            color: #86EFAC;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 64px;
+            padding: 32px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+
+        footer p {
+            color: #475569;
+            font-size: 13px;
+        }
+
+        footer a { color: #64748B; text-decoration: none; }
+        footer a:hover { color: #FF8C00; }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 30px; }
+            .section { padding: 24px; }
+            header { padding: 32px 0 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo-box">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
+                </div>
+                <span class="logo-text">UztexConf</span>
+            </div>
+            <h1>Политика конфиденциальности</h1>
+            <p class="subtitle">Мы серьёзно относимся к защите ваших данных</p>
+            <span class="updated">Обновлено: 17 июня 2026</span>
+        </header>
+
+        <!-- 1 -->
+        <div class="section">
+            <div class="section-num">1</div>
+            <h2>Общие положения</h2>
+            <p>Настоящая Политика конфиденциальности описывает, как приложение UztexConf (далее — «Приложение») собирает, использует и защищает информацию пользователей. Используя Приложение, вы соглашаетесь с условиями данной политики.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="section">
+            <div class="section-num">2</div>
+            <h2>Какие данные мы собираем</h2>
+            <p>Приложение может собирать следующую информацию:</p>
+            <ul>
+                <li><strong>Учётные данные</strong> — логин и имя пользователя для авторизации в системе</li>
+                <li><strong>Данные камеры и микрофона</strong> — видео и аудио потоки используются исключительно для проведения видеоконференций в реальном времени</li>
+                <li><strong>Техническая информация</strong> — версия приложения, модель устройства и версия операционной системы для диагностики и улучшения качества работы</li>
+            </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="section">
+            <div class="section-num">3</div>
+            <h2>Как мы используем данные</h2>
+            <p>Собранная информация используется исключительно для:</p>
+            <ul>
+                <li>Авторизации и идентификации пользователя в системе</li>
+                <li>Обеспечения работы видео- и аудиоконференций</li>
+                <li>Улучшения качества и стабильности приложения</li>
+                <li>Технической поддержки пользователей</li>
+            </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="section">
+            <div class="section-num">4</div>
+            <h2>Хранение и передача данных</h2>
+            <p>Видео и аудио потоки передаются через защищённое WebRTC-соединение и не записываются на сервере. Токены авторизации хранятся локально на устройстве пользователя.</p>
+            <div class="highlight-box">
+                <p>Мы не передаём персональные данные третьим лицам и не используем их в рекламных целях.</p>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="section">
+            <div class="section-num">5</div>
+            <h2>Безопасность</h2>
+            <p>Мы применяем современные меры для защиты ваших данных:</p>
+            <ul>
+                <li>Шифрованное соединение (HTTPS/WSS) для всех сетевых запросов</li>
+                <li>JWT-токены с автоматическим обновлением для безопасной авторизации</li>
+                <li>Сквозное шифрование видео и аудио через WebRTC (SRTP/DTLS)</li>
+                <li>Данные камеры и микрофона не сохраняются после завершения звонка</li>
+            </ul>
+        </div>
+
+        <!-- 6 -->
+        <div class="section">
+            <div class="section-num">6</div>
+            <h2>Разрешения приложения</h2>
+            <p>Для корректной работы Приложение запрашивает следующие разрешения:</p>
+            <ul>
+                <li><strong>Камера</strong> — для передачи видео во время конференций</li>
+                <li><strong>Микрофон</strong> — для передачи аудио во время конференций</li>
+            </ul>
+            <p style="margin-top: 12px;">Вы можете отозвать разрешения в любой момент через системные настройки устройства.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="section">
+            <div class="section-num">7</div>
+            <h2>Права пользователя</h2>
+            <p>Вы имеете право:</p>
+            <ul>
+                <li>Запросить информацию о хранимых данных</li>
+                <li>Потребовать удаление вашей учётной записи и связанных данных</li>
+                <li>Отозвать разрешения на использование камеры и микрофона</li>
+                <li>Прекратить использование Приложения в любой момент</li>
+            </ul>
+        </div>
+
+        <!-- 8 -->
+        <div class="section">
+            <div class="section-num">8</div>
+            <h2>Изменения политики</h2>
+            <p>Мы оставляем за собой право обновлять настоящую Политику конфиденциальности. Актуальная версия всегда доступна на этой странице. При существенных изменениях мы уведомим пользователей через приложение.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="section">
+            <div class="section-num">9</div>
+            <h2>Контакты</h2>
+            <p>Если у вас есть вопросы о данной Политике конфиденциальности или обработке ваших данных, свяжитесь с нами:</p>
+            <p style="margin-top: 12px;"><strong>Email:</strong> <a href="mailto:support@uztex-app.uz">support@uztex-app.uz</a></p>
+            <p><strong>Сайт:</strong> <a href="https://uztex-app.uz">uztex-app.uz</a></p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 UztexConf. Все права защищены.</p>
+            <p style="margin-top:8px"><a href="support.html">Служба поддержки</a></p>
+        </footer>
+    </div>
+</body>
+</html>
