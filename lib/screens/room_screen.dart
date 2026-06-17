@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as webrtc;
@@ -156,19 +158,24 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     });
   }
 
+  bool get _isDesktop =>
+      !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
+
   Future<void> _connect() async {
     try {
-      final cameraStatus = await Permission.camera.request();
-      final micStatus = await Permission.microphone.request();
+      if (!_isDesktop) {
+        final cameraStatus = await Permission.camera.request();
+        final micStatus = await Permission.microphone.request();
 
-      if (!mounted) return;
+        if (!mounted) return;
 
-      if (cameraStatus.isDenied || micStatus.isDenied) {
-        setState(() {
-          _error = LocaleService.instance.tr('permissions_error');
-          _connecting = false;
-        });
-        return;
+        if (cameraStatus.isDenied || micStatus.isDenied) {
+          setState(() {
+            _error = LocaleService.instance.tr('permissions_error');
+            _connecting = false;
+          });
+          return;
+        }
       }
 
       await _room.connect(widget.livekitUrl, widget.token);
