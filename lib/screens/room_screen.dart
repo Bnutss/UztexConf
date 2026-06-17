@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as webrtc;
 import 'package:livekit_client/livekit_client.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uztexconf/services/locale_service.dart';
 
 class RoomScreen extends StatefulWidget {
   final String roomId;
@@ -164,7 +165,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
 
       if (cameraStatus.isDenied || micStatus.isDenied) {
         setState(() {
-          _error = 'Нужны разрешения на камеру и микрофон';
+          _error = LocaleService.instance.tr('permissions_error');
           _connecting = false;
         });
         return;
@@ -174,7 +175,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = 'Ошибка подключения: ${e.toString()}';
+          _error = '${LocaleService.instance.tr('connection_error')}${e.toString()}';
           _connecting = false;
         });
       }
@@ -298,9 +299,9 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Ожидание участников...',
-              style: TextStyle(
+            Text(
+              LocaleService.instance.tr('waiting_participants'),
+              style: const TextStyle(
                 color: Color(0xFF475569),
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
@@ -438,7 +439,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
         children: [
           _ControlButton(
             icon: _micEnabled ? Icons.mic_rounded : Icons.mic_off_rounded,
-            label: 'Микрофон',
+            label: LocaleService.instance.tr('mic'),
             onTap: _toggleMic,
             isActive: _micEnabled,
           ),
@@ -446,13 +447,13 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
             icon: _cameraEnabled
                 ? Icons.videocam_rounded
                 : Icons.videocam_off_rounded,
-            label: 'Камера',
+            label: LocaleService.instance.tr('camera'),
             onTap: _toggleCamera,
             isActive: _cameraEnabled,
           ),
           _ControlButton(
             icon: Icons.cameraswitch_rounded,
-            label: 'Повернуть',
+            label: LocaleService.instance.tr('switch_camera'),
             onTap: _switchCamera,
             isActive: true,
           ),
@@ -460,13 +461,13 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
             icon: _speakerEnabled
                 ? Icons.volume_up_rounded
                 : Icons.volume_off_rounded,
-            label: 'Динамик',
+            label: LocaleService.instance.tr('speaker'),
             onTap: _toggleSpeaker,
             isActive: _speakerEnabled,
           ),
           _ControlButton(
             icon: Icons.call_end_rounded,
-            label: 'Выйти',
+            label: LocaleService.instance.tr('leave'),
             onTap: _disconnect,
             isActive: false,
             isEndCall: true,
@@ -536,7 +537,7 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                       Expanded(
                         child: Text(
                           track.isLocal
-                              ? 'Вы (${track.participant.identity})'
+                              ? LocaleService.instance.tr('you_label').replaceAll('{identity}', track.participant.identity)
                               : track.participant.identity,
                           style: const TextStyle(
                             color: Colors.white,
@@ -618,9 +619,9 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                         color: const Color(0xFFEF4444),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Text(
-                        'Выйти',
-                        style: TextStyle(
+                      child: Text(
+                        LocaleService.instance.tr('leave'),
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
@@ -645,9 +646,9 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Подключение...',
-                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 15),
+                  Text(
+                    LocaleService.instance.tr('connecting'),
+                    style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 15),
                   ),
                 ],
               ),
@@ -758,9 +759,9 @@ class _ParticipantTile extends StatelessWidget {
                           color: const Color(0xFF3B82F6).withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        child: const Text(
-                          'Вы',
-                          style: TextStyle(
+                        child: Text(
+                          LocaleService.instance.tr('you'),
+                          style: const TextStyle(
                             color: Color(0xFF93C5FD),
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
