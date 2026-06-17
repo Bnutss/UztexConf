@@ -18,6 +18,8 @@ UninstallDisplayName=UztexConf
 ; Внешний вид wizard
 WizardStyle=modern
 WizardSizePercent=110
+WizardImageFile=assets\images\installer_wizard.bmp
+WizardSmallImageFile=assets\images\installer_small.bmp
 
 ; Сжатие
 Compression=lzma
