@@ -86,6 +86,8 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
           _connected = true;
           _connecting = false;
         });
+        // Delay track publishing on desktop to let WebRTC fully initialize
+        if (_isDesktop) await Future.delayed(const Duration(milliseconds: 500));
         await _publishLocalTracks();
         _rebuildTracks();
       })
@@ -102,12 +104,23 @@ class _RoomScreenState extends State<RoomScreen> with TickerProviderStateMixin {
   }
 
   Future<void> _publishLocalTracks() async {
+    // Microphone first — more reliable
     try {
       await _room.localParticipant?.setMicrophoneEnabled(true);
     } catch (_) {
       if (mounted) setState(() => _micEnabled = false);
     }
+
+    // Camera — check availability on desktop before enabling
     try {
+      if (_isDesktop) {
+        final devices = await webrtc.navigator.mediaDevices.enumerateDevices();
+        final hasCamera = devices.any((d) => d.kind == 'videoinput');
+        if (!hasCamera) {
+          if (mounted) setState(() => _cameraEnabled = false);
+          return;
+        }
+      }
       await _room.localParticipant?.setCameraEnabled(true);
     } catch (_) {
       if (mounted) setState(() => _cameraEnabled = false);
