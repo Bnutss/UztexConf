@@ -57,15 +57,19 @@ class _SettingsScreenState extends State<SettingsScreen>
   void _onLocale() => setState(() {});
 
   Future<void> _loadUser() async {
+    final info = await PackageInfo.fromPlatform();
+    if (mounted) {
+      setState(() {
+        _appVersion = info.version;
+        _buildNumber = info.buildNumber;
+      });
+    }
     final fn = await ApiService.getFullName();
     final un = await ApiService.getUsername();
-    final info = await PackageInfo.fromPlatform();
     if (mounted) {
       setState(() {
         _fullName = fn ?? '';
         _username = un ?? '';
-        _appVersion = info.version;
-        _buildNumber = info.buildNumber;
       });
     }
   }

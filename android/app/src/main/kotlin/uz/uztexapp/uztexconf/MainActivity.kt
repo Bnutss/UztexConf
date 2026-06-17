@@ -1,4 +1,4 @@
-package com.example.uztexconf
+package uz.uztexapp.uztexconf
 
 import io.flutter.embedding.android.FlutterActivity
 
